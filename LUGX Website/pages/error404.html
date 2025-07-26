@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #5d646b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            color: #ac9696;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .error-code {
+            font-size: 150px;
+            font-weight: bold;
+            color: #ff6b6b;
+            text-shadow: 5px 5px 0 rgba(0, 0, 0, 0.1);
+            position: relative;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite alternate;
+        }
+
+        .error-message {
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #a4d1ff;
+        }
+
+        .home-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #288ada;
+            color: rgb(53, 10, 248);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 140, 255, 0.4);
+        }
+
+        .home-btn:hover {
+            background-color: #339af0;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(77, 171, 247, 0.6);
+        }
+
+        .emoji {
+            font-size: 60px;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+        }
+        .emoji:nth-child(1){
+            color: #fff;
+        }
+
+        .emoji:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .emoji:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #fcc419;
+            opacity: 0;
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .ghost {
+            position: absolute;
+            width: 100px;
+            height: 120px;
+            background-color: #fff;
+            border-radius: 50% 50% 0 0;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            animation: ghostFloat 4s ease-in-out infinite;
+            opacity: 0.8;
+        }
+
+        .ghost:before, .ghost:after {
+            content: '';
+            position: absolute;
+            background-color: #ffffffe0;
+            width: 20px;
+            height: 25px;
+            border-radius: 50%;
+            top: 60px;
+        }
+
+        .ghost:before {
+            left: 20px;
+        }
+
+        .ghost:after {
+            right: 20px;
+        }
+
+        .eyes {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #0e0d0d;
+            border-radius: 50%;
+            top: 40px;
+        }
+
+        .eye-left {
+            left: 30px;
+        }
+
+        .eye-right {
+            right: 30px;
+        }
+
+        .mouth {
+            position: absolute;
+            width: 40px;
+            height: 20px;
+            border-bottom: 3px solid #1b1b1b;
+            border-radius: 0 0 50% 50%;
+            top: 60px;
+            left: 30px;
+        }
+
+        @keyframes ghostFloat {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+        }
+
+        .ghost-1 {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .ghost-2 {
+            top: 30%;
+            right: 15%;
+            animation-delay: 1s;
+        }
+
+        .ghost-3 {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 2s;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="error-code">404</div>
+        <div class="error-message">Oops! The page you're looking for has vanished into thin air.</div>
+        <div class="emoji">👻</div>
+        <div class="emoji">💨</div>
+        <div class="emoji search">🔍</div>
+        <br><br>
+        <a href="/" class="home-btn">Take Me Home</a>
+    </div>
+
+    <div class="ghost ghost-1">
+        <div class="eyes eye-left"></div>
+        <div class="eyes eye-right"></div>
+        <div class="mouth"></div>
+    </div>
+
+    <div class="ghost ghost-2">
+        <div class="eyes eye-left"></div>
+        <div class="eyes eye-right"></div>
+        <div class="mouth"></div>
+    </div>
+
+    <div class="ghost ghost-3">
+        <div class="eyes eye-left"></div>
+        <div class="eyes eye-right"></div>
+        <div class="mouth"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create confetti
+            function createConfetti() {
+                const colors = ['#ff6b6b', '#4dabf7', '#fcc419', '#51cf66', '#9775fa'];
+                
+                for (let i = 0; i < 50; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.top = -10 + 'px';
+                    confetti.style.transform = 'rotate(' + Math.random() * 360 + 'deg)';
+                    
+                    const size = Math.random() * 10 + 5;
+                    confetti.style.width = size + 'px';
+                    confetti.style.height = size + 'px';
+                    
+                    document.body.appendChild(confetti);
+                    
+                    animateConfetti(confetti);
+                }
+            }
+            
+            function animateConfetti(element) {
+                let pos = -10;
+                let opacity = 1;
+                let rotate = Math.random() * 360;
+                
+                const fallInterval = setInterval(function() {
+                    pos += 5;
+                    rotate += 5;
+                    opacity -= 0.01;
+                    
+                    element.style.top = pos + 'px';
+                    element.style.transform = 'rotate(' + rotate + 'deg)';
+                    element.style.opacity = opacity;
+                    
+                    if (pos > window.innerHeight) {
+                        clearInterval(fallInterval);
+                        element.remove();
+                    }
+                }, 20);
+            }
+            
+            // Initial confetti burst
+            createConfetti();
+            
+            // Create occasional confetti
+            setInterval(function() {
+                if (Math.random() > 0.7) {
+                    createConfetti();
+                }
+            }, 3000);
+            
+            // Make eyes follow cursor
+            document.addEventListener('mousemove', function(e) {
+                const ghosts = document.querySelectorAll('.ghost');
+                
+                ghosts.forEach(ghost => {
+                    const ghostRect = ghost.getBoundingClientRect();
+                    const ghostX = ghostRect.left + ghostRect.width / 2;
+                    const ghostY = ghostRect.top + ghostRect.height / 2;
+                    
+                    const angle = Math.atan2(e.clientY - ghostY, e.clientX - ghostX);
+                    const distance = Math.min(5, Math.sqrt(Math.pow(e.clientX - ghostX, 2) + Math.pow(e.clientY - ghostY, 2)) / 10);
+                    
+                    const leftEye = ghost.querySelector('.eye-left');
+                    const rightEye = ghost.querySelector('.eye-right');
+                    
+                    if (leftEye && rightEye) {
+                        leftEye.style.transform = `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px)`;
+                        rightEye.style.transform = `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px)`;
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
